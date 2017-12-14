@@ -1,0 +1,2 @@
+# EntityJS
+Entity system
