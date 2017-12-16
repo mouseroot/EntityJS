@@ -48,6 +48,22 @@ Entity.prototype.loot = function(target) {
     }
 };
 
+Entity.prototype.inspect = function(target) {
+    target.displayInfo("hp");
+    target.displayInfo("attack");
+    target.displayInfo("def");
+};
+
+Entity.prototype.heal = function(amt) {
+    this.hp += amt;
+};
+
+Entity.prototype.reset = function() {
+    this.hp = 100;
+    this.active = false;
+    this.alive = true;
+};
+
 Entity.prototype.hit = function(amt) {
     this.hp -= amt;
 };
