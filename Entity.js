@@ -1,3 +1,6 @@
+/*
+    Entity class
+*/
 function Entity(name, hp) {
     this.id = 0;
     this.owner = null;
@@ -161,7 +164,6 @@ Entity.prototype.update = function() {
 };
 
 Entity.prototype.info = function() {
-    console.log("---");
     console.log('Entity:' + this.name);
     console.log('HP:' + this.hp);
     console.log("Exp:" + this.exp + "/" + this.nextLevel(this.level+1));
@@ -205,4 +207,58 @@ Entity.prototype.infoExpCurve = function() {
     for(var i=1;i < 99;i++) {
         console.log(i + ") To next level " + this.nextLevel(i));
     }
+};
+
+/*
+    Item class
+*/
+function Item(name) {
+    this.name = name;
+    this.owner = null;
+    this.description = "";
+    this.value = 0;
+    this.sell = false;
+}
+
+Item.prototype.setOwner = function(owner) {
+    this.owner = owner;
+};
+
+Item.prototype.setDescription = function(desc) {
+    this.desc = desc;
+};
+
+Item.prototype.setValue = function(val) {
+    this.value = val;
+};
+
+Item.prototype.toggleSellable = function() {
+  this.sell = !this.sell;  
+};
+
+/*
+    Weapon class
+*/
+function Weapon(name,baseDamage) {
+    this.name = name;
+    this.damage = baseDamage;
+}
+
+Weapon.prototype.setDamage = function(dmg) {
+    this.damage = dmg;
+}
+
+
+/*
+    Potion class
+*/
+
+function Potion(name,amt) {
+    Item.call(this,name);
+    this.effect = amt;
+}
+Potion.prototype = new Item();
+
+Potion.prototype.setEffect = function(amt) {
+    this.effect = amt;
 };
